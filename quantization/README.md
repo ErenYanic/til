@@ -1,12 +1,12 @@
-# Embedding Model Quantisation
+# Embedding Model Quantization
 
 ## Overview
 
-Quantisation reduces the precision of model weights and computations from floating-point (FP32) to lower-bit representations (INT8, NF4, BF16), decreasing memory footprint and latency whilst preserving semantic quality.
+Quantization reduces the precision of model weights and computations from floating-point (FP32) to lower-bit representations (INT8, NF4, BF16), decreasing memory footprint and latency whilst preserving semantic quality.
 
 ## Context
 
-This benchmark was conducted to evaluate quantisation techniques for embedding models used in [SEC-SemanticSearch](https://github.com/ErenYanic/SEC-SemanticSearch), a semantic search system over SEC filings.
+This benchmark was conducted to evaluate quantization techniques for embedding models used in [SEC-SemanticSearch](https://github.com/ErenYanic/SEC-SemanticSearch), a semantic search system over SEC filings.
 
 ## Benchmark Results
 
@@ -23,13 +23,13 @@ Semantic similarity reported as mean cosine similarity vs FP32 reference embeddi
 
 ## Application in SEC-SemanticSearch
 
-BF16 quantisation was selected for the SEC-SemanticSearch production deployment. Whilst the theoretical VRAM reduction is 50%, practical measurement in that system achieved 27.12% savings. Performance degradation remained below 0.0001 in cosine similarity, effectively preserving search quality without detectable information loss.
+BF16 quantization was selected for the SEC-SemanticSearch production deployment. Whilst the theoretical VRAM reduction is 50%, practical measurement in that system achieved 27.12% savings. Performance degradation remained below 0.0001 in cosine similarity, effectively preserving search quality without detectable information loss.
 
 ## Key Findings
 
 - **BF16** achieves 50% VRAM reduction with 0.9999 semantic similarity in notebook. In practice, system-level overhead limits gains to approximately 27%, but inference quality remains unaffected.
 
-- **INT8 quantisation** achieves 25% VRAM reduction with 0.999 semantic similarity, an acceptable trade-off for moderate memory constraints.
+- **INT8 quantization** achieves 25% VRAM reduction with 0.999 semantic similarity, an acceptable trade-off for moderate memory constraints.
 
 - **NF4** delivers the fastest inference with the lowest memory footprint, but introduces measurable semantic drift (~2.5%), making it suitable only when speed is prioritised over embedding fidelity.
 
